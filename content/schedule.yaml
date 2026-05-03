@@ -1,4 +1,7 @@
 posts:
+  # CI test entry — remove after successful workflow run
+  - date: "2026-05-04"
+    yaml: content/week-01/01-mon-mercury-sagittarius.yaml
   - date: "2026-11-17"
     yaml: content/week-01/01-mon-mercury-sagittarius.yaml
   - date: "2026-11-18"
