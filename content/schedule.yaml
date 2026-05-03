@@ -1,0 +1,14 @@
+posts:
+  - date: "2026-11-17"
+    yaml: content/week-01/01-mon-mercury-sagittarius.yaml
+  - date: "2026-11-18"
+    yaml: content/week-01/02-tue-rising-threshold.yaml
+  # 2026-11-19 — Wed reel, NOT yet automated (Remotion to come)
+  - date: "2026-11-20"
+    yaml: content/week-01/04-thu-venus-square-saturn.yaml
+  - date: "2026-11-21"
+    yaml: content/week-01/05-fri-quote-north-node.yaml
+  - date: "2026-11-22"
+    yaml: content/week-01/06-sat-sun-sagittarius.yaml
+  - date: "2026-11-23"
+    yaml: content/week-01/07-sun-week-ahead.yaml

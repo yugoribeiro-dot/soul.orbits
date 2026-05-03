@@ -1,0 +1,56 @@
+template: carousel
+slides:
+  - template: carousel_cover
+    fields:
+      label: "SKY THIS WEEK"
+      headline: "The week of Nov 24:"
+      subhead: "three doors open."
+  - template: carousel_slide
+    fields:
+      label: "MON · NOV 24"
+      body: |-
+        Mars trine Jupiter.
+
+        Effort meets opportunity.
+
+        Move on something
+        you've been postponing.
+  - template: carousel_slide
+    fields:
+      label: "WED · NOV 26"
+      body: |-
+        New Moon
+        in Sagittarius.
+
+        The widest reset
+        of the season.
+
+        Set an intention
+        larger than feels safe.
+  - template: carousel_slide
+    fields:
+      label: "FRI · NOV 28"
+      body: |-
+        Mercury cazimi.
+
+        A clear-seeing window.
+
+        Mercury at the heart
+        of the Sun — what's true
+        becomes obvious.
+  - template: carousel_slide
+    fields:
+      label: "THIS WEEK"
+      body: |-
+        Stop refining.
+
+        Start aiming.
+
+        Sagittarius doesn't ask
+        for the perfect target.
+        It asks if you're willing
+        to draw the bow.
+  - template: quote
+    fields:
+      quote: |-
+        Save this for your week.

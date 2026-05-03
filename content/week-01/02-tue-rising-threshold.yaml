@@ -1,0 +1,66 @@
+template: carousel
+slides:
+  - template: carousel_cover
+    fields:
+      label: "CHART LITERACY · 01"
+      headline: "Your Rising sign isn't your personality."
+      subhead: "It's your threshold."
+  - template: carousel_slide
+    fields:
+      label: "CHART LITERACY · 02"
+      body: |-
+        The internet says:
+        "Your Rising is how the world sees you."
+
+        Close. But it flattens
+        something more interesting.
+  - template: carousel_slide
+    fields:
+      label: "CHART LITERACY · 03"
+      body: |-
+        The Ascendant is the sign
+        on the eastern horizon
+        at the moment you were born.
+
+        It's the doorway —
+        not the room.
+  - template: carousel_slide
+    fields:
+      label: "CHART LITERACY · 04"
+      body: |-
+        Everyone who meets you
+        walks through this door
+        first.
+
+        The door is real.
+        It is not the whole house
+        behind it.
+  - template: carousel_slide
+    fields:
+      label: "CHART LITERACY · 05"
+      body: |-
+        You don't always feel
+        like your Rising sign,
+        because you live inside
+        the house, not at the door.
+
+        Other people feel it
+        more than you do.
+  - template: carousel_slide
+    fields:
+      label: "CHART LITERACY · 06"
+      body: |-
+        The planet that rules
+        your Rising sign
+        is the doorman.
+
+        Where it lives in your chart
+        is where most of your story
+        actually happens.
+  - template: quote
+    fields:
+      quote: |-
+        You're not your threshold.
+
+        But everyone enters
+        through it.

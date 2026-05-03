@@ -1,0 +1,80 @@
+name: publish-daily
+
+on:
+  schedule:
+    # 09:00 UTC daily — adjust to your audience timezone
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Render only, do not publish"
+        required: false
+        default: "false"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install pyyaml playwright
+          python -m playwright install chromium --with-deps
+
+      - name: Compute IMAGE_BASE_URL
+        run: |
+          # Resolve the post yaml for today to derive its parent dir for raw URLs.
+          # publish.py uses IMAGE_BASE_URL + /images/<filename>.
+          TODAY=$(date -u +%Y-%m-%d)
+          POST_REL=$(python -c "
+          import yaml, sys
+          s = yaml.safe_load(open('content/schedule.yaml'))
+          for p in s.get('posts', []):
+              if p['date'] == '$TODAY':
+                  print(p['yaml']); break
+          ")
+          if [ -z "$POST_REL" ]; then
+            echo "no post scheduled for $TODAY"
+            echo "SKIP=true" >> $GITHUB_ENV
+            exit 0
+          fi
+          DIR=$(dirname "$POST_REL")
+          BASE="https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/$DIR"
+          echo "IMAGE_BASE_URL=$BASE" >> $GITHUB_ENV
+
+      - name: Render and publish today
+        if: env.SKIP != 'true'
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IMAGE_BASE_URL: ${{ env.IMAGE_BASE_URL }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            echo "DRY RUN — rendering only"
+            TODAY=$(date -u +%Y-%m-%d)
+            POST_REL=$(python -c "
+          import yaml
+          s = yaml.safe_load(open('content/schedule.yaml'))
+          for p in s.get('posts', []):
+              if p['date'] == '$TODAY':
+                  print(p['yaml']); break
+          ")
+            python automation/render_post.py "$POST_REL"
+          else
+            python automation/publish_today.py
+          fi
+
+      - name: Commit publish log
+        if: env.SKIP != 'true' && inputs.dry_run != 'true'
+        run: |
+          git config user.name "soul-orbits-bot"
+          git config user.email "bot@soul.orbits"
+          git add automation/publish_log.jsonl || true
+          git diff --cached --quiet || git commit -m "log: published $(date -u +%Y-%m-%d)"
+          git push || true

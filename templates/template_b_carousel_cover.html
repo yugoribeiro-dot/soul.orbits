@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{HEADLINE}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-cosmos: #14122B;
+    --nebula: #221E45;
+    --moonlight: #F5EFE0;
+    --old-gold: #D4A574;
+    --dusk-violet: #7C6FA8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; }
+  body {
+    background: var(--deep-cosmos);
+    font-family: 'Inter', sans-serif;
+    color: var(--moonlight);
+    position: relative;
+    padding: 140px 100px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, rgba(245,239,224,0.20), transparent 50%),
+      radial-gradient(1px 1px at 87% 22%, rgba(245,239,224,0.15), transparent 50%),
+      radial-gradient(1px 1px at 71% 61%, rgba(245,239,224,0.18), transparent 50%),
+      radial-gradient(2px 2px at 91% 84%, rgba(212,165,116,0.15), transparent 50%),
+      radial-gradient(1px 1px at 8% 88%, rgba(245,239,224,0.10), transparent 50%);
+    pointer-events: none;
+  }
+  .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dusk-violet);
+  }
+  .headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 92px;
+    line-height: 1.1;
+    color: var(--moonlight);
+    text-align: left;
+    max-width: 880px;
+    position: relative;
+    z-index: 1;
+  }
+  .subhead {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 56px;
+    line-height: 1.2;
+    color: var(--old-gold);
+    margin-top: 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .divider {
+    width: 80px;
+    height: 1px;
+    background: var(--old-gold);
+    opacity: 0.6;
+  }
+  .swipe {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: lowercase;
+    color: rgba(245,239,224,0.55);
+    margin-top: 24px;
+  }
+  .top, .bottom { position: relative; z-index: 1; }
+  .middle { position: relative; z-index: 1; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="label">{{LABEL}}</div>
+  </div>
+  <div class="middle">
+    <div class="headline">{{HEADLINE}}</div>
+    <div class="subhead">{{SUBHEAD}}</div>
+  </div>
+  <div class="bottom">
+    <div class="divider"></div>
+    <div class="swipe">swipe →</div>
+  </div>
+</body>
+</html>

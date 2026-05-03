@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{QUOTE}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-cosmos: #14122B;
+    --nebula: #221E45;
+    --moonlight: #F5EFE0;
+    --old-gold: #D4A574;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; }
+  body {
+    background: var(--deep-cosmos);
+    color: var(--moonlight);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 100px;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 18% 22%, rgba(245,239,224,0.15), transparent 50%),
+      radial-gradient(1px 1px at 82% 28%, rgba(245,239,224,0.10), transparent 50%),
+      radial-gradient(1px 1px at 75% 76%, rgba(245,239,224,0.12), transparent 50%),
+      radial-gradient(2px 2px at 28% 84%, rgba(212,165,116,0.18), transparent 50%);
+    pointer-events: none;
+  }
+  .quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 70px;
+    line-height: 1.3;
+    color: var(--moonlight);
+    text-align: center;
+    max-width: 800px;
+    position: relative;
+    z-index: 1;
+  }
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--old-gold);
+    margin: 80px 0 50px;
+    opacity: 0.7;
+    position: relative;
+    z-index: 1;
+  }
+  .attribution {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 26px;
+    color: rgba(212,165,116,0.7);
+    position: relative;
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+  <div class="quote">{{QUOTE}}</div>
+  <div class="divider"></div>
+  <div class="attribution">— soul.orbits</div>
+</body>
+</html>

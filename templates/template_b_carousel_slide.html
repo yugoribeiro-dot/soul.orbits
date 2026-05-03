@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{LABEL}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-cosmos: #14122B;
+    --nebula: #221E45;
+    --moonlight: #F5EFE0;
+    --old-gold: #D4A574;
+    --dusk-violet: #7C6FA8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; }
+  body {
+    background: var(--deep-cosmos);
+    font-family: 'Inter', sans-serif;
+    color: var(--moonlight);
+    position: relative;
+    padding: 140px 100px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dusk-violet);
+  }
+  .body-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 52px;
+    line-height: 1.35;
+    color: var(--moonlight);
+    text-align: left;
+    max-width: 880px;
+    white-space: pre-line;
+  }
+  .footer {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 22px;
+    letter-spacing: 4px;
+    color: rgba(212,165,116,0.6);
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+  <div class="label">{{LABEL}}</div>
+  <div class="body-text">{{BODY}}</div>
+  <div class="footer">soul.orbits</div>
+</body>
+</html>
