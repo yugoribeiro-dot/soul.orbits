@@ -1,0 +1,69 @@
+template: carousel
+slides:
+  - template: carousel_cover
+    fields:
+      label: "SKY THIS WEEK"
+      headline: "The week of May 11:"
+      subhead: "the sky goes inward."
+  - template: carousel_slide
+    fields:
+      label: "MON · MAY 11"
+      body: |-
+        Moon enters Pisces.
+
+        After two days of
+        Capricorn structure,
+        feelings soften
+        and blur back open.
+
+        Don't make hard
+        decisions today.
+  - template: carousel_slide
+    fields:
+      label: "WED · MAY 13"
+      body: |-
+        Sun in Taurus
+        sextile Jupiter
+        in Cancer.
+
+        The week's quiet
+        gift — ease, slow
+        opportunity, soft
+        abundance.
+
+        Don't miss it
+        by working through it.
+  - template: carousel_slide
+    fields:
+      label: "FRI · MAY 15"
+      body: |-
+        Mercury enters Gemini
+        (preview).
+
+        Mind speeds up.
+        Conversations multiply.
+        Inboxes fill.
+
+        The next two weeks:
+        decide what to start.
+        Most of it doesn't
+        need to be finished.
+  - template: carousel_slide
+    fields:
+      label: "THIS WEEK"
+      body: |-
+        Pluto retrograde
+        is the multi-month
+        backdrop now.
+
+        Five months of inner
+        work. Today's invitation:
+
+        notice what you're
+        ready to dismantle —
+        from inside.
+  - template: quote
+    fields:
+      quote: |-
+        Save this for
+        your week.

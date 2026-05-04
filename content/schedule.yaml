@@ -2,7 +2,18 @@ posts:
   # === Week 1 — May 4-10, 2026 ===
   - date: "2026-05-04"
     yaml: content/week-01-real/01-mon-may4-mars-jupiter.yaml
-  # rest of Week 1 added throughout May 4-5
+  - date: "2026-05-05"
+    yaml: content/week-01-real/02-tue-may5-saturn-aries.yaml
+  - date: "2026-05-06"
+    yaml: content/week-01-real/03-wed-may6-moon-capricorn.yaml
+  - date: "2026-05-07"
+    yaml: content/week-01-real/04-thu-may7-pluto-retrograde.yaml
+  - date: "2026-05-08"
+    yaml: content/week-01-real/05-fri-may8-saturn-quote.yaml
+  - date: "2026-05-09"
+    yaml: content/week-01-real/06-sat-may9-aries-sun-saturn.yaml
+  - date: "2026-05-10"
+    yaml: content/week-01-real/07-sun-may10-sky-this-week.yaml
 
   # === November test content (legacy, will be removed) ===
   - date: "2026-11-17"

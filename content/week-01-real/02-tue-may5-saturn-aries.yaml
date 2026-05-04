@@ -1,0 +1,77 @@
+template: carousel
+slides:
+  - template: carousel_cover
+    fields:
+      label: "CHART LITERACY · 01"
+      headline: "Saturn just changed signs."
+      subhead: "It hasn't done this since 1996."
+  - template: carousel_slide
+    fields:
+      label: "CHART LITERACY · 02"
+      body: |-
+        Saturn entered Aries
+        in February.
+
+        For the next 2.5 years,
+        the planet of structure
+        runs through the sign
+        of beginnings.
+  - template: carousel_slide
+    fields:
+      label: "CHART LITERACY · 03"
+      body: |-
+        Saturn is the editor
+        of the chart.
+
+        It removes what isn't
+        load-bearing. It asks
+        you to do the thing
+        you keep avoiding —
+        alone.
+  - template: carousel_slide
+    fields:
+      label: "CHART LITERACY · 04"
+      body: |-
+        Aries is the sign
+        of clean breaks.
+
+        Identity. Courage.
+        Going first.
+
+        Saturn here doesn't
+        cancel that. It demands
+        a more honest version.
+  - template: carousel_slide
+    fields:
+      label: "CHART LITERACY · 05"
+      body: |-
+        The last cohort
+        born under
+        Saturn in Aries:
+        1996–1999.
+
+        Their cultural mood:
+        identity revolution,
+        Y2K, the internet
+        becoming personal.
+  - template: carousel_slide
+    fields:
+      label: "CHART LITERACY · 06"
+      body: |-
+        What this 2.5-year
+        cycle keeps asking:
+
+        "What do you have
+        to do alone?"
+
+        Most people answer
+        wrong, because the
+        answer is the thing
+        they kept postponing.
+  - template: quote
+    fields:
+      quote: |-
+        Saturn doesn't cancel
+        Aries. It edits it
+        until what's left
+        can stand on its own.

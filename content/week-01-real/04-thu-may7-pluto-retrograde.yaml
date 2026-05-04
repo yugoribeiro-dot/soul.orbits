@@ -1,0 +1,6 @@
+template: daily_transit
+fields:
+  label: DAILY TRANSIT
+  glyph: "♇"
+  headline: Pluto turns inward.
+  subline: The deep work moves underground.

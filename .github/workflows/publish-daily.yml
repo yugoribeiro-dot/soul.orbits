@@ -2,8 +2,10 @@ name: publish-daily
 
 on:
   schedule:
-    # 09:00 UTC daily — adjust to your audience timezone
-    - cron: "0 9 * * *"
+    # 14:00 UTC weekdays — EU afternoon + US morning peak
+    - cron: "0 14 * * 1-5"
+    # 20:00 UTC weekends — EU evening + US afternoon peak
+    - cron: "0 20 * * 0,6"
   workflow_dispatch:
     inputs:
       dry_run:

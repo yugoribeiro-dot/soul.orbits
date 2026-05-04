@@ -1,0 +1,73 @@
+template: carousel
+slides:
+  - template: carousel_cover
+    fields:
+      label: "GROWTH · 01"
+      headline: "If your Sun is in Aries,"
+      subhead: "Saturn is rebuilding you."
+  - template: carousel_slide
+    fields:
+      label: "GROWTH · 02"
+      body: |-
+        Saturn is currently
+        moving through Aries.
+
+        At some point in the
+        next 2.5 years, it will
+        cross your Sun exactly.
+  - template: carousel_slide
+    fields:
+      label: "GROWTH · 03"
+      body: |-
+        Saturn-on-Sun is the
+        most identity-defining
+        transit of the chart.
+
+        It only happens
+        twice in a lifetime —
+        once around 29-30,
+        again around 58-59.
+  - template: carousel_slide
+    fields:
+      label: "GROWTH · 04"
+      body: |-
+        It tends to feel like:
+
+        — sudden clarity about
+          what you're doing
+        — the end of a role
+          you outgrew
+        — a quiet authority
+          you didn't have before
+  - template: carousel_slide
+    fields:
+      label: "GROWTH · 05"
+      body: |-
+        For Aries Sun
+        specifically, the
+        question Saturn asks is:
+
+        "Are you actually
+        the leader you thought
+        you were — or were
+        you just the loudest
+        voice in the room?"
+  - template: carousel_slide
+    fields:
+      label: "GROWTH · 06"
+      body: |-
+        Find your Sun degree
+        in Aries.
+
+        Saturn reaches it
+        sometime between
+        February 2026 and
+        April 2028.
+
+        That's your edit window.
+  - template: quote
+    fields:
+      quote: |-
+        Save this.
+        Re-read it on the
+        other side of 2028.
