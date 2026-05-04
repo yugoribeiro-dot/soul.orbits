@@ -5,7 +5,7 @@
 <title>{{LABEL}}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --deep-cosmos: #14122B;
@@ -21,15 +21,15 @@
     font-family: 'Inter', sans-serif;
     color: var(--moonlight);
     position: relative;
-    padding: 140px 100px 100px;
+    padding: 80px 80px 70px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
   .label {
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 600;
     letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--dusk-violet);
@@ -37,26 +37,52 @@
   .body-text {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
-    font-size: 52px;
-    line-height: 1.35;
+    font-size: 68px;
+    line-height: 1.22;
+    letter-spacing: -0.5px;
     color: var(--moonlight);
     text-align: left;
-    max-width: 880px;
+    max-width: 920px;
     white-space: pre-line;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: -40px;
   }
   .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .next {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: lowercase;
+    color: rgba(245,239,224,0.45);
+  }
+  .next::before {
+    content: '— ';
+    color: var(--old-gold);
+    margin-right: 4px;
+  }
+  .wordmark {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
-    font-size: 22px;
+    font-size: 20px;
     letter-spacing: 4px;
-    color: rgba(212,165,116,0.6);
-    text-align: right;
+    color: rgba(212,165,116,0.5);
   }
 </style>
 </head>
 <body>
   <div class="label">{{LABEL}}</div>
   <div class="body-text">{{BODY}}</div>
-  <div class="footer">soul.orbits</div>
+  <div class="footer">
+    <div class="next">keep reading →</div>
+    <div class="wordmark">soul.orbits</div>
+  </div>
 </body>
 </html>
