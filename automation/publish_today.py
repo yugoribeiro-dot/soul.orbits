@@ -17,9 +17,13 @@ from __future__ import annotations
 import os
 import sys
 import yaml
+import json
 import subprocess
 from pathlib import Path
 from datetime import datetime, timezone
+
+# Make sibling modules importable.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 ROOT = Path(__file__).resolve().parent.parent
 SCHEDULE = ROOT / "content" / "schedule.yaml"
@@ -57,10 +61,32 @@ def main():
         )
 
     print(f"publishing {post_yaml.name} (slot={slot})...")
-    subprocess.run(
+    result = subprocess.run(
         [sys.executable, str(ROOT / "automation" / "publish.py"), str(post_yaml)],
         check=True,
+        capture_output=True,
+        text=True,
     )
+    # Echo publish.py output so the GH Actions log shows the media_id.
+    if result.stdout:
+        print(result.stdout)
+    if result.stderr:
+        print(result.stderr, file=sys.stderr)
+
+    # Notify on Telegram when a Reel is published, so the user can add
+    # trending audio in IG within the first 60min for max algorithm reach.
+    if data.get("template") == "reel":
+        media_id = ""
+        try:
+            payload = json.loads(result.stdout.strip().splitlines()[-1]) if result.stdout else {}
+            media_id = payload.get("media_id", "")
+        except Exception:
+            pass
+        try:
+            from notify_telegram import reel_published
+            reel_published(media_id)
+        except Exception as e:
+            print(f"telegram notify skipped: {e}", file=sys.stderr)
 
 
 if __name__ == "__main__":
