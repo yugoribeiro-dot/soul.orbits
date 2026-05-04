@@ -80,8 +80,9 @@ jobs:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IMAGE_BASE_URL: ${{ steps.post.outputs.image_base }}
           REPO_RAW_BASE_URL: ${{ steps.post.outputs.repo_base }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
           SLOT: ${{ steps.slot.outputs.slot }}
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then

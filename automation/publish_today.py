@@ -83,10 +83,10 @@ def main():
         except Exception:
             pass
         try:
-            from notify_telegram import reel_published
+            from notify_email import reel_published
             reel_published(media_id)
         except Exception as e:
-            print(f"telegram notify skipped: {e}", file=sys.stderr)
+            print(f"email notify skipped: {e}", file=sys.stderr)
 
 
 if __name__ == "__main__":
