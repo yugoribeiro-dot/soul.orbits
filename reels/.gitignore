@@ -1,5 +1,5 @@
 node_modules/
-out/*.mp4
 out/preview-*.png
 .remotion/
 *.log
+# MP4s are tracked — needed by Meta Graph API for Reel publish (raw.githubusercontent.com)

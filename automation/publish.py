@@ -129,6 +129,61 @@ def publish_single(post_yaml: Path, caption: str, ig_user_id: str, token: str) -
     return {"type": "single", "creation_id": creation_id, "media_id": pub["id"]}
 
 
+def publish_reel(post_yaml: Path, caption: str, ig_user_id: str, token: str) -> dict:
+    """
+    Publish an Instagram Reel.
+
+    The YAML must have:
+        template: reel
+        video: relative path to the MP4 (under the same folder as the YAML
+               or under reels/out/ — first match wins)
+
+    The video URL must be publicly fetchable (raw.githubusercontent.com works).
+    """
+    data = yaml.safe_load(post_yaml.read_text(encoding="utf-8"))
+    video_rel = data.get("video")
+    if not video_rel:
+        raise SystemExit(f"reel YAML missing 'video' field: {post_yaml}")
+
+    # Resolve to a public URL. We assume the MP4 lives under the repo and
+    # IMAGE_BASE_URL points at content/week-XX-real. For reels we let the YAML
+    # specify either an absolute URL (http...) or a path relative to the repo root.
+    if video_rel.startswith("http"):
+        video_url = video_rel
+    else:
+        base = os.environ.get("REPO_RAW_BASE_URL")
+        if not base:
+            raise SystemExit(
+                "REPO_RAW_BASE_URL not set — needed to serve the MP4 to Meta. "
+                "Example: https://raw.githubusercontent.com/<user>/<repo>/main"
+            )
+        video_url = f"{base.rstrip('/')}/{video_rel.lstrip('/')}"
+
+    cover_url = data.get("cover_url")  # optional thumbnail
+
+    params = {
+        "media_type": "REELS",
+        "video_url": video_url,
+        "caption": caption,
+        "share_to_feed": "true",
+        "access_token": token,
+    }
+    if cover_url:
+        params["cover_url"] = cover_url
+
+    res = http_post(f"{ig_user_id}/media", params)
+    creation_id = res["id"]
+
+    # Reels can take longer to process — wait up to 5 minutes.
+    wait_for_container(creation_id, token, max_wait_s=300)
+
+    pub = http_post(
+        f"{ig_user_id}/media_publish",
+        {"creation_id": creation_id, "access_token": token},
+    )
+    return {"type": "reel", "creation_id": creation_id, "media_id": pub["id"], "video_url": video_url}
+
+
 def publish_carousel(post_yaml: Path, caption: str, ig_user_id: str, token: str) -> dict:
     images_dir = post_yaml.parent / "images"
     slides = sorted(images_dir.glob(f"{post_yaml.stem}-slide*.png"))
@@ -211,6 +266,8 @@ def main():
 
     if data["template"] == "carousel":
         result = publish_carousel(post_yaml, caption, ig_user_id, token)
+    elif data["template"] == "reel":
+        result = publish_reel(post_yaml, caption, ig_user_id, token)
     else:
         result = publish_single(post_yaml, caption, ig_user_id, token)
 

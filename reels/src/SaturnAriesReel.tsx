@@ -4,16 +4,16 @@ import { Starfield } from './Starfield';
 import { Background, HookScene, SignScene, CtaScene, COLORS } from './scenes';
 
 // 10s @ 30fps = 300 frames
-export const MarsJupiterReel: React.FC = () => {
+export const SaturnAriesReel: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: COLORS.cosmos }}>
       <Background />
-      <Starfield seed={7} width={1080} height={1920} />
+      <Starfield seed={11} width={1080} height={1920} />
 
       <Sequence from={0} durationInFrames={60}>
         <HookScene
-          headline={'you wanna\nfight your\nboss today.'}
-          subline={"It's Mars □ Jupiter."}
+          headline={'Saturn just\nentered\nAries.'}
+          subline={'4 signs are about to be rebuilt.'}
         />
       </Sequence>
 
@@ -21,7 +21,7 @@ export const MarsJupiterReel: React.FC = () => {
         <SignScene
           glyph={'♈︎'}
           sign="aries"
-          message="Stop drafting the angry email."
+          message="Saturn is editing your identity."
           color={COLORS.pink}
         />
       </Sequence>
@@ -30,7 +30,7 @@ export const MarsJupiterReel: React.FC = () => {
         <SignScene
           glyph={'♋︎'}
           sign="cancer"
-          message='That "small" argument is not small.'
+          message="Saturn is rewriting your career."
           color={COLORS.violet}
         />
       </Sequence>
@@ -39,7 +39,7 @@ export const MarsJupiterReel: React.FC = () => {
         <SignScene
           glyph={'♎︎'}
           sign="libra"
-          message="Don't fold to keep the peace."
+          message="Saturn is editing your relationships."
           color={COLORS.gold}
         />
       </Sequence>
@@ -48,15 +48,15 @@ export const MarsJupiterReel: React.FC = () => {
         <SignScene
           glyph={'♑︎'}
           sign="capricorn"
-          message="Stay out of the work drama. Reply tomorrow."
+          message="Saturn is burning your comfort zone."
           color={COLORS.pink}
         />
       </Sequence>
 
       <Sequence from={240} durationInFrames={60}>
         <CtaScene
-          label="TAG SOMEONE WHO NEEDS THIS"
-          headline={'save this\nbefore you\ntext them.'}
+          label="TAG AN ARIES, CANCER, LIBRA, CAPRICORN"
+          headline={'save this.\nre-read in\n2028.'}
         />
       </Sequence>
     </AbsoluteFill>
