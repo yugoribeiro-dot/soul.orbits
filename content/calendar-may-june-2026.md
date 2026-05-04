@@ -5,6 +5,27 @@
 
 ---
 
+## ⚡ STRATEGY PIVOT — May 4, 2026
+
+**Old plan dropped: editorial single-image posts.** Honest review showed it would NOT grow fast — too "premium quiet", no per-sign hooks, no algorithm-friendly format.
+
+**New strategy (in effect from Mon May 4):**
+- **Every post is a 7-slide carousel** (algorithm boost ~3x vs single).
+- **Slide 1 = scroll-stopper hook** in big bold Archivo Black ("you wanna fight your boss today" / "Saturn just entered Aries — 4 signs are about to be rebuilt").
+- **Slides 2–5 = per-sign breakdown** ("Aries — stop drafting the angry email"). 70% of posts target 4 specific signs by name in the hook.
+- **Slide 6 = universal/everyone slide.**
+- **Slide 7 = explicit CTA** ("save this", "tag a [sign]", "share with a friend").
+- **Visual identity:** vibrant gradient mesh (violet→pink→gold) + Archivo Black headlines + serif italic body. Pop, not premium-quiet.
+- **Captions** rewritten with hooks, save-bait, and sign-specific hashtags (#aries #cancer #libra #capricorn alongside transit tags).
+- **Reels** (3/week) added from Week 2 — Remotion-rendered, trending audio.
+- **AI imagery** (gpt-image-2): used sparingly — 1 hero post/week + Soul Map Snapshot landing + Reel openers. Templates remain HTML for feed consistency.
+
+Templates: `template_d_carousel_hook.html`, `template_d_carousel_sign.html`, `template_d_carousel_cta.html`. Old `template_a_daily_transit.html` deprecated for daily use (kept for occasional editorial breaks, ~1/2 weeks max).
+
+**Week 1 already redone & re-rendered under this strategy. Mon May 4 carousel republished (media_id 17984826806993388).**
+
+---
+
 ## Strategy summary
 
 ### Mix
@@ -77,7 +98,43 @@ These five are the "why now" backdrop for the entire calendar.
 
 ---
 
-## Week 1 — Foundation (May 5–11)
+## Week 1 — Foundation (May 4–10) — VIRAL FORMAT REWRITE
+
+> Goal: establish voice + scroll-stop on the feed. Zero promos. First 100 followers via per-sign hooks.
+> All 7 posts are 7-slide carousels (template_d). 47 slides rendered. Mon May 4 published. Calendar entries below reflect the new format — superseded the old May 5-11 plan entirely.
+
+### Mon · May 4 · 14:00 UTC — Mars □ Jupiter (PUBLISHED ✅)
+- **Hook:** "you wanna fight your boss today."
+- **Targets:** Aries · Cancer · Libra · Capricorn + universal + CTA
+- **media_id:** 17984826806993388
+
+### Tue · May 5 · 14:00 UTC — Saturn entered Aries
+- **Hook:** "Saturn just entered Aries. 4 signs are about to get rebuilt for the next 2.5 years."
+- **Targets:** Aries (identity) · Cancer (career) · Libra (relationships) · Capricorn (foundations)
+
+### Wed · May 6 · 14:00 UTC — Moon enters Capricorn
+- **Hook:** "your feelings need a spreadsheet."
+- **Targets:** Cancer · Capricorn · Pisces · Scorpio (48h emotional weather)
+
+### Thu · May 7 · 14:00 UTC — Pluto retrograde
+- **Hook:** "Pluto just went backwards. 5 months of secrets coming up."
+- **Targets:** Scorpio · Aries · Cancer · Capricorn
+
+### Fri · May 8 · 14:00 UTC — Saturn truth (5-slide quote carousel)
+- **Hook:** "Saturn doesn't punish. It edits."
+- **Universal post** (no sign targeting) — pure save/share bait
+
+### Sat · May 9 · 20:00 UTC — Aries Sun + Saturn rebuild
+- **Hook:** "if you're an aries, the next 2 years rebuild you."
+- **Niche-targeted post** — Aries Sun first, then Aries Moon/Rising
+
+### Sun · May 10 · 20:00 UTC — Sky this week ahead
+- **Hook:** "your week, but only 4 signs need to read."
+- **Targets:** Pisces (Mon) · Taurus (Wed) · Cancer (Wed) · Gemini (Fri)
+
+---
+
+## Week 1 — OLD PLAN (DEPRECATED, kept for reference only)
 
 > Goal: establish voice. Zero promos. Find first 100 followers via reach hooks.
 
