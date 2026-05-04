@@ -2,12 +2,16 @@ name: publish-daily
 
 on:
   schedule:
-    # 14:00 UTC weekdays — EU afternoon + US morning peak
-    - cron: "0 14 * * 1-5"
-    # 20:00 UTC weekends — EU evening + US afternoon peak
-    - cron: "0 20 * * 0,6"
+    # 14:00 UTC every day — primary slot (carousel)
+    - cron: "0 14 * * *"
+    # 20:00 UTC every day — evening slot (Reel or weekend carousel)
+    - cron: "0 20 * * *"
   workflow_dispatch:
     inputs:
+      slot:
+        description: "Which slot to publish (primary | evening)"
+        required: false
+        default: "primary"
       dry_run:
         description: "Render only, do not publish"
         required: false
@@ -16,7 +20,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -24,59 +28,72 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
+      - name: Resolve slot from cron schedule
+        id: slot
+        run: |
+          # Cron event UTC hour determines slot.
+          # Manual workflow_dispatch passes inputs.slot.
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            HOUR=$(date -u +%H)
+            if [ "$HOUR" = "14" ]; then echo "slot=primary" >> $GITHUB_OUTPUT
+            elif [ "$HOUR" = "20" ]; then echo "slot=evening" >> $GITHUB_OUTPUT
+            else echo "slot=primary" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "slot=${{ inputs.slot }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Find today's post for the slot
+        id: post
+        run: |
+          TODAY=$(date -u +%Y-%m-%d)
+          SLOT="${{ steps.slot.outputs.slot }}"
+          POST_REL=$(python -c "
+          import yaml
+          s = yaml.safe_load(open('content/schedule.yaml'))
+          for p in s.get('posts', []):
+              if p['date'] == '$TODAY' and p.get('slot', 'primary') == '$SLOT':
+                  print(p['yaml']); break
+          ")
+          if [ -z "$POST_REL" ]; then
+            echo "no post scheduled for $TODAY slot=$SLOT"
+            echo "skip=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          DIR=$(dirname "$POST_REL")
+          BASE_IMG="https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/$DIR"
+          BASE_REPO="https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}"
+          echo "post_rel=$POST_REL" >> $GITHUB_OUTPUT
+          echo "image_base=$BASE_IMG" >> $GITHUB_OUTPUT
+          echo "repo_base=$BASE_REPO" >> $GITHUB_OUTPUT
+
+      - name: Install Python deps
+        if: steps.post.outputs.skip != 'true'
         run: |
           pip install pyyaml playwright
           python -m playwright install chromium --with-deps
 
-      - name: Compute IMAGE_BASE_URL
-        run: |
-          # Resolve the post yaml for today to derive its parent dir for raw URLs.
-          # publish.py uses IMAGE_BASE_URL + /images/<filename>.
-          TODAY=$(date -u +%Y-%m-%d)
-          POST_REL=$(python -c "
-          import yaml, sys
-          s = yaml.safe_load(open('content/schedule.yaml'))
-          for p in s.get('posts', []):
-              if p['date'] == '$TODAY':
-                  print(p['yaml']); break
-          ")
-          if [ -z "$POST_REL" ]; then
-            echo "no post scheduled for $TODAY"
-            echo "SKIP=true" >> $GITHUB_ENV
-            exit 0
-          fi
-          DIR=$(dirname "$POST_REL")
-          BASE="https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/$DIR"
-          echo "IMAGE_BASE_URL=$BASE" >> $GITHUB_ENV
-
-      - name: Render and publish today
-        if: env.SKIP != 'true'
+      - name: Render and publish
+        if: steps.post.outputs.skip != 'true'
         env:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
-          IMAGE_BASE_URL: ${{ env.IMAGE_BASE_URL }}
+          IMAGE_BASE_URL: ${{ steps.post.outputs.image_base }}
+          REPO_RAW_BASE_URL: ${{ steps.post.outputs.repo_base }}
+          SLOT: ${{ steps.slot.outputs.slot }}
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             echo "DRY RUN — rendering only"
-            TODAY=$(date -u +%Y-%m-%d)
-            POST_REL=$(python -c "
-          import yaml
-          s = yaml.safe_load(open('content/schedule.yaml'))
-          for p in s.get('posts', []):
-              if p['date'] == '$TODAY':
-                  print(p['yaml']); break
-          ")
-            python automation/render_post.py "$POST_REL"
+            python automation/render_post.py "${{ steps.post.outputs.post_rel }}"
           else
-            python automation/publish_today.py
+            python automation/publish_today.py "${{ steps.slot.outputs.slot }}"
           fi
 
       - name: Commit publish log
-        if: env.SKIP != 'true' && inputs.dry_run != 'true'
+        if: steps.post.outputs.skip != 'true' && inputs.dry_run != 'true'
         run: |
           git config user.name "soul-orbits-bot"
           git config user.email "bot@soul.orbits"
           git add automation/publish_log.jsonl || true
-          git diff --cached --quiet || git commit -m "log: published $(date -u +%Y-%m-%d)"
+          git diff --cached --quiet || git commit -m "log: published $(date -u +%Y-%m-%dT%H:%M)Z slot=${{ steps.slot.outputs.slot }}"
           git push || true
