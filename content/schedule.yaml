@@ -1,7 +1,10 @@
 posts:
-  # CI test entry — remove after successful workflow run
+  # === Week 1 — May 4-10, 2026 ===
   - date: "2026-05-04"
-    yaml: content/week-01/01-mon-mercury-sagittarius.yaml
+    yaml: content/week-01-real/01-mon-may4-mars-jupiter.yaml
+  # rest of Week 1 added throughout May 4-5
+
+  # === November test content (legacy, will be removed) ===
   - date: "2026-11-17"
     yaml: content/week-01/01-mon-mercury-sagittarius.yaml
   - date: "2026-11-18"
