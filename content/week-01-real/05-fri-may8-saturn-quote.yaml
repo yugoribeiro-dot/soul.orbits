@@ -1,5 +1,55 @@
-template: quote
-fields:
-  quote: |-
-    Saturn doesn't punish.
-    It edits.
+template: carousel
+slides:
+  - template: carousel_hook
+    fields:
+      badge: "FRIDAY TRUTH"
+      pages: "1 / 5"
+      headline: |-
+        Saturn doesn't
+        punish.
+      subline: It edits. Read this before you blame yourself for the hard year.
+
+  - template: carousel_sign
+    fields:
+      pages: "2 / 5"
+      glyph: "♄"
+      sign: everyone
+      label: "WHAT SATURN ACTUALLY DOES"
+      message: |-
+        Removes
+        what isn't
+        load-bearing.
+      quote: The job that drained you. The friendship that flattered you. The version of you that was performing — Saturn cuts it.
+
+  - template: carousel_sign
+    fields:
+      pages: "3 / 5"
+      glyph: "♄"
+      sign: everyone
+      label: "WHY IT FEELS LIKE PUNISHMENT"
+      message: |-
+        Because you
+        liked the
+        thing it took.
+      quote: Saturn isn't cruel. You were just attached to something that wasn't yours to keep. The grief is real. The edit is correct.
+
+  - template: carousel_sign
+    fields:
+      pages: "4 / 5"
+      glyph: "♄"
+      sign: everyone
+      label: "WHAT'S LEFT AFTER"
+      message: |-
+        The version
+        of you that
+        can stand alone.
+      quote: That's the whole point. Not pain — load-bearing structure. You'll thank Saturn in three years. Not before.
+
+  - template: carousel_cta
+    fields:
+      pages: "5 / 5"
+      label: "SAVE THIS FOR THE HARD WEEK"
+      headline: |-
+        send this
+        to someone
+        in their saturn return.

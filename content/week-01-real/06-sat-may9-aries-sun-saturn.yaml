@@ -1,73 +1,81 @@
 template: carousel
 slides:
-  - template: carousel_cover
+  - template: carousel_hook
     fields:
-      label: "GROWTH · 01"
-      headline: "If your Sun is in Aries,"
-      subhead: "Saturn is rebuilding you."
-  - template: carousel_slide
-    fields:
-      label: "GROWTH · 02"
-      body: |-
-        Saturn is currently
-        moving through Aries.
+      badge: "ARIES ONLY"
+      pages: "1 / 7"
+      headline: |-
+        if you're an
+        aries, the
+        next 2 years
+        rebuild you.
+      subline: Saturn-on-Sun only happens twice in your life. This is one of them.
 
-        At some point in the
-        next 2.5 years, it will
-        cross your Sun exactly.
-  - template: carousel_slide
+  - template: carousel_sign
     fields:
-      label: "GROWTH · 03"
-      body: |-
-        Saturn-on-Sun is the
-        most identity-defining
-        transit of the chart.
+      pages: "2 / 7"
+      glyph: "☉"
+      sign: aries sun
+      label: "WHAT SATURN-ON-SUN MEANS"
+      message: |-
+        The most
+        identity-defining
+        transit in your chart.
+      quote: It only crosses your Sun twice in a lifetime. Once around 29-30. Again around 58-59. This is one of them.
 
-        It only happens
-        twice in a lifetime —
-        once around 29-30,
-        again around 58-59.
-  - template: carousel_slide
+  - template: carousel_sign
     fields:
-      label: "GROWTH · 04"
-      body: |-
-        It tends to feel like:
+      pages: "3 / 7"
+      glyph: "☉"
+      sign: aries sun
+      label: "WHAT IT FEELS LIKE"
+      message: |-
+        Sudden clarity
+        about what
+        you're doing.
+      quote: The role you outgrew ends. A quieter authority replaces the loud one. People stop arguing with you and start asking you.
 
-        — sudden clarity about
-          what you're doing
-        — the end of a role
-          you outgrew
-        — a quiet authority
-          you didn't have before
-  - template: carousel_slide
+  - template: carousel_sign
     fields:
-      label: "GROWTH · 05"
-      body: |-
-        For Aries Sun
-        specifically, the
-        question Saturn asks is:
+      pages: "4 / 7"
+      glyph: "☉"
+      sign: aries sun
+      label: "THE QUESTION SATURN ASKS"
+      message: |-
+        Are you
+        actually
+        the leader?
+      quote: Or were you just the loudest voice in the room? Saturn answers that question for you. You can't fake it through this transit.
 
-        "Are you actually
-        the leader you thought
-        you were — or were
-        you just the loudest
-        voice in the room?"
-  - template: carousel_slide
+  - template: carousel_sign
     fields:
-      label: "GROWTH · 06"
-      body: |-
-        Find your Sun degree
-        in Aries.
+      pages: "5 / 7"
+      glyph: "☽"
+      sign: aries moon / rising
+      label: "ALSO HIT (BUT SOFTER)"
+      message: |-
+        Same edit.
+        Different
+        room of life.
+      quote: Aries Moon = emotional rebuild. Aries Rising = how the world sees you. Same Saturn, different surface.
 
-        Saturn reaches it
-        sometime between
-        February 2026 and
-        April 2028.
-
-        That's your edit window.
-  - template: quote
+  - template: carousel_sign
     fields:
-      quote: |-
-        Save this.
-        Re-read it on the
-        other side of 2028.
+      pages: "6 / 7"
+      glyph: "✦"
+      sign: everyone else
+      label: "FIND YOUR ARIES DEGREE"
+      message: |-
+        Saturn reaches
+        it sometime
+        before April 2028.
+      quote: Whatever house Aries rules in your chart is your edit room. Find the degree, mark the date. That's your transit window.
+
+  - template: carousel_cta
+    fields:
+      pages: "7 / 7"
+      label: "TAG EVERY ARIES YOU KNOW"
+      headline: |-
+        save this.
+        re-read on
+        the other side.

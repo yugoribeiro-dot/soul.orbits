@@ -1,77 +1,81 @@
 template: carousel
 slides:
-  - template: carousel_cover
+  - template: carousel_hook
     fields:
-      label: "CHART LITERACY · 01"
-      headline: "Saturn just changed signs."
-      subhead: "It hasn't done this since 1996."
-  - template: carousel_slide
+      badge: "READ THIS"
+      pages: "1 / 7"
+      headline: |-
+        Saturn just
+        entered
+        Aries.
+      subline: 4 signs are about to get rebuilt from scratch — for the next 2.5 years.
+
+  - template: carousel_sign
     fields:
-      label: "CHART LITERACY · 02"
-      body: |-
-        Saturn entered Aries
-        in February.
+      pages: "2 / 7"
+      glyph: "♈"
+      sign: aries
+      label: "FOR THE NEXT 2.5 YEARS"
+      message: |-
+        Saturn is
+        editing your
+        identity.
+      quote: Whatever you're pretending to be ends. What's real gets stronger. No middle ground.
 
-        For the next 2.5 years,
-        the planet of structure
-        runs through the sign
-        of beginnings.
-  - template: carousel_slide
+  - template: carousel_sign
     fields:
-      label: "CHART LITERACY · 03"
-      body: |-
-        Saturn is the editor
-        of the chart.
+      pages: "3 / 7"
+      glyph: "♋"
+      sign: cancer
+      label: "FOR THE NEXT 2.5 YEARS"
+      message: |-
+        Saturn is
+        rewriting
+        your career.
+      quote: 10th house pressure. The role you hide in is leaving. The one you actually want is asking for proof.
 
-        It removes what isn't
-        load-bearing. It asks
-        you to do the thing
-        you keep avoiding —
-        alone.
-  - template: carousel_slide
+  - template: carousel_sign
     fields:
-      label: "CHART LITERACY · 04"
-      body: |-
-        Aries is the sign
-        of clean breaks.
+      pages: "4 / 7"
+      glyph: "♎"
+      sign: libra
+      label: "FOR THE NEXT 2.5 YEARS"
+      message: |-
+        Saturn is
+        editing your
+        relationships.
+      quote: Every relationship gets honest. Some end. The ones that stay become real for the first time.
 
-        Identity. Courage.
-        Going first.
-
-        Saturn here doesn't
-        cancel that. It demands
-        a more honest version.
-  - template: carousel_slide
+  - template: carousel_sign
     fields:
-      label: "CHART LITERACY · 05"
-      body: |-
-        The last cohort
-        born under
-        Saturn in Aries:
-        1996–1999.
+      pages: "5 / 7"
+      glyph: "♑"
+      sign: capricorn
+      label: "FOR THE NEXT 2.5 YEARS"
+      message: |-
+        Saturn is
+        burning your
+        comfort zone.
+      quote: 4th house. Home, family, foundations. What you built on autopilot now demands your full attention.
 
-        Their cultural mood:
-        identity revolution,
-        Y2K, the internet
-        becoming personal.
-  - template: carousel_slide
+  - template: carousel_sign
     fields:
-      label: "CHART LITERACY · 06"
-      body: |-
-        What this 2.5-year
-        cycle keeps asking:
+      pages: "6 / 7"
+      glyph: "✦"
+      sign: everyone else
+      label: "UNIVERSAL ENERGY"
+      message: |-
+        Find Aries
+        in your chart.
+        That house is
+        under construction.
+      quote: Saturn in Aries lasts until April 2028. Whatever house Aries rules in your chart is your 2.5-year project.
 
-        "What do you have
-        to do alone?"
-
-        Most people answer
-        wrong, because the
-        answer is the thing
-        they kept postponing.
-  - template: quote
+  - template: carousel_cta
     fields:
-      quote: |-
-        Saturn doesn't cancel
-        Aries. It edits it
-        until what's left
-        can stand on its own.
+      pages: "7 / 7"
+      label: "TAG AN ARIES, CANCER, LIBRA, CAPRICORN"
+      headline: |-
+        save this.
+        re-read in
+        2028.

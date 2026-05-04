@@ -1,69 +1,82 @@
 template: carousel
 slides:
-  - template: carousel_cover
+  - template: carousel_hook
     fields:
-      label: "SKY THIS WEEK"
-      headline: "The week of May 11:"
-      subhead: "the sky goes inward."
-  - template: carousel_slide
+      badge: "WEEK AHEAD"
+      pages: "1 / 7"
+      headline: |-
+        your week,
+        but only
+        4 signs
+        need to read.
+      subline: May 11–17. Pluto retrograde is the backdrop. Here's who's hit hardest.
+
+  - template: carousel_sign
     fields:
-      label: "MON · MAY 11"
-      body: |-
-        Moon enters Pisces.
+      pages: "2 / 7"
+      glyph: "♓"
+      sign: pisces
+      label: "MON · MOON IN PISCES"
+      message: |-
+        Don't make
+        the hard
+        decision today.
+      quote: Moon enters your sign. Feelings blur. Anything you decide on Monday gets re-decided by Wednesday. Wait.
 
-        After two days of
-        Capricorn structure,
-        feelings soften
-        and blur back open.
-
-        Don't make hard
-        decisions today.
-  - template: carousel_slide
+  - template: carousel_sign
     fields:
-      label: "WED · MAY 13"
-      body: |-
-        Sun in Taurus
-        sextile Jupiter
-        in Cancer.
+      pages: "3 / 7"
+      glyph: "♉"
+      sign: taurus
+      label: "WED · SUN x JUPITER"
+      message: |-
+        The week's
+        gift falls
+        on Wednesday.
+      quote: Sun in your sign sextiles Jupiter. Slow opportunity, soft money, easy yes. Don't miss it by working through it.
 
-        The week's quiet
-        gift — ease, slow
-        opportunity, soft
-        abundance.
-
-        Don't miss it
-        by working through it.
-  - template: carousel_slide
+  - template: carousel_sign
     fields:
-      label: "FRI · MAY 15"
-      body: |-
-        Mercury enters Gemini
-        (preview).
+      pages: "4 / 7"
+      glyph: "♋"
+      sign: cancer
+      label: "WED · JUPITER LIGHT"
+      message: |-
+        Someone is
+        about to
+        offer you
+        the ease.
+      quote: Jupiter is in your sign. Wednesday's sextile lands in your house of resources. Say yes faster than usual.
 
+  - template: carousel_sign
+    fields:
+      pages: "5 / 7"
+      glyph: "♊"
+      sign: gemini
+      label: "FRI · MERCURY ENTERS"
+      message: |-
+        Your ruler
+        is back.
         Mind speeds up.
-        Conversations multiply.
-        Inboxes fill.
+      quote: Mercury enters your sign on Friday. Conversations multiply. Inboxes fill. Decide what to start — most of it doesn't need to finish.
 
-        The next two weeks:
-        decide what to start.
-        Most of it doesn't
-        need to be finished.
-  - template: carousel_slide
+  - template: carousel_sign
     fields:
-      label: "THIS WEEK"
-      body: |-
-        Pluto retrograde
-        is the multi-month
-        backdrop now.
+      pages: "6 / 7"
+      glyph: "♇"
+      sign: everyone
+      label: "WHOLE WEEK BACKDROP"
+      message: |-
+        Pluto is
+        retrograde.
+        For 5 months.
+      quote: Notice what you're ready to dismantle from inside. Whatever you bury this week becomes loud in October.
 
-        Five months of inner
-        work. Today's invitation:
-
-        notice what you're
-        ready to dismantle —
-        from inside.
-  - template: quote
+  - template: carousel_cta
     fields:
-      quote: |-
-        Save this for
-        your week.
+      pages: "7 / 7"
+      label: "TAG SOMEONE WHO NEEDS THEIR WEEK"
+      headline: |-
+        save this
+        for your
+        whole week.

@@ -1,6 +1,80 @@
-template: daily_transit
-fields:
-  label: DAILY TRANSIT
-  glyph: "♇"
-  headline: Pluto turns inward.
-  subline: The deep work moves underground.
+template: carousel
+slides:
+  - template: carousel_hook
+    fields:
+      badge: "5 MONTHS"
+      pages: "1 / 7"
+      headline: |-
+        Pluto just
+        went
+        backwards.
+      subline: 5 months of secrets coming up. 4 signs need to brace.
+
+  - template: carousel_sign
+    fields:
+      pages: "2 / 7"
+      glyph: "♏"
+      sign: scorpio
+      label: "FOR THE NEXT 5 MONTHS"
+      message: |-
+        Your ruler
+        is asking
+        the real question.
+      quote: Pluto rules you. Retrograde = it points the spotlight at you. The pattern you keep repeating ends here.
+
+  - template: carousel_sign
+    fields:
+      pages: "3 / 7"
+      glyph: "♈"
+      sign: aries
+      label: "FOR THE NEXT 5 MONTHS"
+      message: |-
+        Stop fixing
+        the surface.
+        Go deeper.
+      quote: Pluto squares Aries energy. The fight you keep picking is with yourself. Sit with that for a week.
+
+  - template: carousel_sign
+    fields:
+      pages: "4 / 7"
+      glyph: "♋"
+      sign: cancer
+      label: "FOR THE NEXT 5 MONTHS"
+      message: |-
+        A family
+        truth is
+        about to surface.
+      quote: Pluto retrograde + Cancer = ancestral patterns. The thing your mom never said is going to come up. Listen.
+
+  - template: carousel_sign
+    fields:
+      pages: "5 / 7"
+      glyph: "♑"
+      sign: capricorn
+      label: "FOR THE NEXT 5 MONTHS"
+      message: |-
+        Power dynamics
+        you ignored
+        get loud.
+      quote: Boss, partner, parent — whoever you've been letting steer your life. Pluto retrograde wants the steering wheel back.
+
+  - template: carousel_sign
+    fields:
+      pages: "6 / 7"
+      glyph: "✦"
+      sign: everyone else
+      label: "UNIVERSAL ENERGY"
+      message: |-
+        What you bury
+        now will rule
+        your 2027.
+      quote: Pluto retrograde isn't a punishment. It's an audit. Whatever you avoid for 5 months becomes the thing you can't avoid in 2027.
+
+  - template: carousel_cta
+    fields:
+      pages: "7 / 7"
+      label: "TAG A SCORPIO, ARIES, CANCER, CAPRICORN"
+      headline: |-
+        save this.
+        re-read in
+        october.

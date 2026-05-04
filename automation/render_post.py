@@ -15,6 +15,10 @@ TEMPLATES = ROOT / "templates"
 
 TEMPLATE_MAP = {
     "daily_transit": TEMPLATES / "template_a_daily_transit.html",
+    "daily_transit_meme": TEMPLATES / "template_a_meme.html",
+    "carousel_hook": TEMPLATES / "template_d_carousel_hook.html",
+    "carousel_sign": TEMPLATES / "template_d_carousel_sign.html",
+    "carousel_cta": TEMPLATES / "template_d_carousel_cta.html",
     "carousel_cover": TEMPLATES / "template_b_carousel_cover.html",
     "carousel_slide": TEMPLATES / "template_b_carousel_slide.html",
     "quote": TEMPLATES / "template_c_quote.html",

@@ -1,6 +1,80 @@
-template: daily_transit
-fields:
-  label: DAILY TRANSIT
-  glyph: "☽"
-  headline: Moon enters Capricorn.
-  subline: Feeling becomes form.
+template: carousel
+slides:
+  - template: carousel_hook
+    fields:
+      badge: "TONIGHT"
+      pages: "1 / 7"
+      headline: |-
+        your feelings
+        need a
+        spreadsheet.
+      subline: Moon enters Capricorn for 2 days. 4 signs feel it harder than the rest.
+
+  - template: carousel_sign
+    fields:
+      pages: "2 / 7"
+      glyph: "♋"
+      sign: cancer
+      label: "FOR THE NEXT 48H"
+      message: |-
+        You'll feel
+        emotionally
+        cold-shouldered.
+      quote: Moon opposite your sign. Don't take it personally — people aren't shutting you out, the sky is.
+
+  - template: carousel_sign
+    fields:
+      pages: "3 / 7"
+      glyph: "♑"
+      sign: capricorn
+      label: "FOR THE NEXT 48H"
+      message: |-
+        You finally
+        feel like
+        yourself again.
+      quote: Moon in your sign. Energy returns. People notice you. Don't waste it on small talk.
+
+  - template: carousel_sign
+    fields:
+      pages: "4 / 7"
+      glyph: "♓"
+      sign: pisces
+      label: "FOR THE NEXT 48H"
+      message: |-
+        You need
+        a plan,
+        not a feeling.
+      quote: Sextile from Capricorn moon = grounding. Use this window to actually finish the thing you've been "manifesting".
+
+  - template: carousel_sign
+    fields:
+      pages: "5 / 7"
+      glyph: "♏"
+      sign: scorpio
+      label: "FOR THE NEXT 48H"
+      message: |-
+        You'll say
+        what you've
+        been holding.
+      quote: Moon sextile your sign. The hard conversation gets easier. Have it before Friday.
+
+  - template: carousel_sign
+    fields:
+      pages: "6 / 7"
+      glyph: "✦"
+      sign: everyone else
+      label: "UNIVERSAL ENERGY"
+      message: |-
+        Don't try
+        to feel.
+        Build instead.
+      quote: Capricorn moon turns emotion into action. The fix you've been postponing — now's the 48 hours.
+
+  - template: carousel_cta
+    fields:
+      pages: "7 / 7"
+      label: "TAG SOMEONE WHO NEEDS THIS"
+      headline: |-
+        save this
+        for the
+        next 48h.
