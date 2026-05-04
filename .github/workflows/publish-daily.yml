@@ -28,6 +28,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install pyyaml (needed for schedule lookup)
+        run: pip install pyyaml
+
       - name: Resolve slot from cron schedule
         id: slot
         run: |
@@ -70,7 +73,7 @@ jobs:
       - name: Install Python deps
         if: steps.post.outputs.skip != 'true'
         run: |
-          pip install pyyaml playwright
+          pip install playwright
           python -m playwright install chromium --with-deps
 
       - name: Render and publish
