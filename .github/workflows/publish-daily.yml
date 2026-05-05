@@ -34,13 +34,18 @@ jobs:
       - name: Resolve slot from cron schedule
         id: slot
         run: |
-          # Cron event UTC hour determines slot.
-          # Manual workflow_dispatch passes inputs.slot.
+          # Cron event UTC hour determines slot. We use BROAD WINDOWS because
+          # GitHub-scheduled workflows can be delayed 30-60+ minutes during
+          # peak hours — exact-hour matching fails silently and falls back
+          # to the wrong slot.
+          #   primary  cron 14 UTC → matches 12:00–17:59 UTC
+          #   evening  cron 20 UTC → matches 18:00–23:59 UTC
           if [ "${{ github.event_name }}" = "schedule" ]; then
-            HOUR=$(date -u +%H)
-            if [ "$HOUR" = "14" ]; then echo "slot=primary" >> $GITHUB_OUTPUT
-            elif [ "$HOUR" = "20" ]; then echo "slot=evening" >> $GITHUB_OUTPUT
-            else echo "slot=primary" >> $GITHUB_OUTPUT
+            HOUR=$(date -u +%-H)
+            if [ "$HOUR" -ge 18 ] && [ "$HOUR" -le 23 ]; then
+              echo "slot=evening" >> $GITHUB_OUTPUT
+            else
+              echo "slot=primary" >> $GITHUB_OUTPUT
             fi
           else
             echo "slot=${{ inputs.slot }}" >> $GITHUB_OUTPUT
