@@ -27,6 +27,26 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 ROOT = Path(__file__).resolve().parent.parent
 SCHEDULE = ROOT / "content" / "schedule.yaml"
+PUBLISH_LOG = ROOT / "automation" / "publish_log.jsonl"
+
+
+def latest_log_entry_for(post_name: str) -> dict | None:
+    """Return the most recent publish_log entry for post_name, or None."""
+    if not PUBLISH_LOG.exists():
+        return None
+    entries = []
+    with PUBLISH_LOG.open("r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                e = json.loads(line)
+            except Exception:
+                continue
+            if e.get("post") == post_name:
+                entries.append(e)
+    return entries[-1] if entries else None
 
 
 def main():
@@ -50,41 +70,32 @@ def main():
     if not post_yaml.exists():
         raise SystemExit(f"post yaml missing: {post_yaml}")
 
-    # For Reels we don't need to re-render — the MP4 is already in the repo.
-    # For carousels/singles we re-render to keep images fresh.
     data = yaml.safe_load(post_yaml.read_text(encoding="utf-8"))
+
+    # Render carousels and singles. Reels skip render — MP4 is pre-built.
     if data.get("template") != "reel":
-        print(f"rendering {post_yaml.name}...")
+        print(f"rendering {post_yaml.name}...", flush=True)
         subprocess.run(
             [sys.executable, str(ROOT / "automation" / "render_post.py"), str(post_yaml)],
             check=True,
         )
 
-    print(f"publishing {post_yaml.name} (slot={slot})...")
-    result = subprocess.run(
+    # Publish — let stdout/stderr flow through so workflow logs show real errors.
+    print(f"publishing {post_yaml.name} (slot={slot})...", flush=True)
+    subprocess.run(
         [sys.executable, str(ROOT / "automation" / "publish.py"), str(post_yaml)],
         check=True,
-        capture_output=True,
-        text=True,
     )
-    # Echo publish.py output so the GH Actions log shows the media_id.
-    if result.stdout:
-        print(result.stdout)
-    if result.stderr:
-        print(result.stderr, file=sys.stderr)
 
-    # Notify on Telegram when a Reel is published, so the user can add
+    # Notify by email when a Reel is published, so the user can add
     # trending audio in IG within the first 60min for max algorithm reach.
     if data.get("template") == "reel":
-        media_id = ""
-        try:
-            payload = json.loads(result.stdout.strip().splitlines()[-1]) if result.stdout else {}
-            media_id = payload.get("media_id", "")
-        except Exception:
-            pass
+        last = latest_log_entry_for(post_yaml.name) or {}
+        media_id = last.get("media_id", "")
         try:
             from notify_email import reel_published
             reel_published(media_id)
+            print(f"email sent for media_id={media_id}", flush=True)
         except Exception as e:
             print(f"email notify skipped: {e}", file=sys.stderr)
 
