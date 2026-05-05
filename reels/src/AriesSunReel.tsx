@@ -1,5 +1,5 @@
 import React from 'react';
-import { AbsoluteFill, Sequence, useCurrentFrame, interpolate } from 'remotion';
+import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, interpolate } from 'remotion';
 import { Starfield } from './Starfield';
 import { Background, HookScene, SignScene, CtaScene, COLORS, FONT_DISPLAY, FONT_SERIF, FONT_SERIF_ITALIC, FONT_SANS } from './scenes';
 
@@ -66,6 +66,7 @@ const QuestionScene: React.FC = () => {
 export const AriesSunReel: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: COLORS.cosmos }}>
+      <Audio src={staticFile('audio/ambient.wav')} />
       <Background />
       <Starfield seed={23} width={1080} height={1920} />
 

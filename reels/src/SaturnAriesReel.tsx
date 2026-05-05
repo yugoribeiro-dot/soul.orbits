@@ -1,5 +1,5 @@
 import React from 'react';
-import { AbsoluteFill, Sequence } from 'remotion';
+import { AbsoluteFill, Audio, Sequence, staticFile } from 'remotion';
 import { Starfield } from './Starfield';
 import { Background, HookScene, SignScene, CtaScene, COLORS } from './scenes';
 
@@ -7,6 +7,7 @@ import { Background, HookScene, SignScene, CtaScene, COLORS } from './scenes';
 export const SaturnAriesReel: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: COLORS.cosmos }}>
+      <Audio src={staticFile('audio/ambient.wav')} />
       <Background />
       <Starfield seed={11} width={1080} height={1920} />
 
