@@ -125,6 +125,15 @@ def run() -> None:
         check=True,
     )
 
+    # Cross-post to TikTok drafts (best-effort — failure here doesn't fail
+    # the IG publish). User picks trending sound in TikTok app and taps Post.
+    try:
+        from cross_post_tiktok import cross_post
+        tt = cross_post(post_yaml)
+        print(f"[publish_today] tiktok cross-post: {tt}", flush=True)
+    except Exception as e:
+        print(f"[publish_today] tiktok cross-post skipped: {type(e).__name__}: {e}", file=sys.stderr, flush=True)
+
     # Notify by email when a Reel is published, so the user can add
     # trending audio in IG within the first 60min for max algorithm reach.
     if data.get("template") == "reel":

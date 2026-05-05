@@ -1,0 +1,28 @@
+name: comment-drafts
+
+on:
+  schedule:
+    # 07:00 UTC daily (08:00 Lisbon WEST). Drafts arrive in your inbox before
+    # the morning IG session — copy-paste 5 distinctive comments, takes ~5min.
+    - cron: "0 7 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  drafts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run drafter
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+        run: python automation/draft_comments.py
