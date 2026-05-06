@@ -46,27 +46,60 @@ def env(key: str) -> str:
     return val
 
 
+def _retryable(exc: Exception) -> bool:
+    """Decide whether an exception is worth retrying. We retry transient
+    network problems but NOT 4xx HTTP responses from Meta — those are
+    permanent (bad token, invalid container, etc.)."""
+    if isinstance(exc, urllib.error.HTTPError):
+        # Retry only 5xx and 429 (rate limit). 4xx is a real error.
+        return exc.code >= 500 or exc.code == 429
+    if isinstance(exc, (ConnectionResetError, urllib.error.URLError, TimeoutError)):
+        return True
+    if isinstance(exc, OSError):
+        return True
+    return False
+
+
+def _request(req_or_url, timeout: int = 60, attempts: int = 4) -> dict:
+    """urlopen + JSON decode with retry/backoff on transient network errors.
+    GitHub-hosted runners and local windows networks both reset connections
+    occasionally during the 15+ HTTP calls of a carousel publish."""
+    last_exc: Exception | None = None
+    for i in range(attempts):
+        try:
+            with urllib.request.urlopen(req_or_url, timeout=timeout) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except urllib.error.HTTPError as e:
+            body = e.read().decode("utf-8", errors="replace")
+            if _retryable(e) and i < attempts - 1:
+                wait = 2 ** i  # 1s, 2s, 4s
+                print(f"[publish] HTTP {e.code} (retry in {wait}s): {body[:200]}", file=sys.stderr, flush=True)
+                time.sleep(wait)
+                last_exc = e
+                continue
+            raise RuntimeError(f"HTTP {e.code}: {body}") from None
+        except Exception as e:
+            if _retryable(e) and i < attempts - 1:
+                wait = 2 ** i
+                print(f"[publish] {type(e).__name__} (retry in {wait}s): {e}", file=sys.stderr, flush=True)
+                time.sleep(wait)
+                last_exc = e
+                continue
+            raise
+    raise RuntimeError(f"all retries failed: {last_exc}")
+
+
 def http_post(path: str, params: dict[str, Any]) -> dict:
     url = f"{GRAPH_BASE}/{path.lstrip('/')}"
     data = urllib.parse.urlencode(params).encode("utf-8")
     req = urllib.request.Request(url, data=data, method="POST")
-    try:
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        body = e.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"HTTP {e.code} POST {path}: {body}") from None
+    return _request(req)
 
 
 def http_get(path: str, params: dict[str, Any]) -> dict:
     qs = urllib.parse.urlencode(params)
     url = f"{GRAPH_BASE}/{path.lstrip('/')}?{qs}"
-    try:
-        with urllib.request.urlopen(url, timeout=60) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        body = e.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"HTTP {e.code} GET {path}: {body}") from None
+    return _request(url)
 
 
 def wait_for_container(creation_id: str, token: str, max_wait_s: int = 120) -> None:
