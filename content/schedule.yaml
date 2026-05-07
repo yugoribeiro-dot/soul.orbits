@@ -1,60 +1,38 @@
-# soul.orbits — auto-publish schedule
+# soul.orbits — auto-publish schedule (REEL-ONLY pivot, May 7 2026)
+#
+# Strategy reset:
+#   Carrosséis fora. 1 Reel/dia em prime time (20 UTC = 21h Lisboa).
+#   Razão: TikTok dá reach orgânico real apenas a Reels; carrossel auto-publish
+#   teve 3 falhas seguidas; Reels têm o maior ceiling de growth para conta a 0.
 #
 # Each post has:
 #   date:  YYYY-MM-DD (UTC)
-#   slot:  primary (14:00 UTC) | evening (20:00 UTC)
+#   slot:  evening (20:00 UTC = 21h Lisboa) — primary slot deprecated
 #   yaml:  path to post yaml relative to repo root
 #
-# Workflow triggers: GitHub Actions runs at 14:00 and 20:00 UTC every day.
-# Each run filters by today's date + slot. No match = clean exit.
-#
-# Strategy:
-#   - Mon-Fri primary (14 UTC) = main carousel
-#   - Sat-Sun primary slot is also evening (20 UTC) for IG weekend peak
-#   - Reels go in evening slot when paired with a carousel that day
-#   - 1 carousel + 1 Reel = max 2 posts/day to avoid feed cannibalization
+# Workflow triggers GitHub Actions at 14:00 and 20:00 UTC daily.
+# 14 UTC slot now skips cleanly (no posts scheduled). 20 UTC publishes.
 
 posts:
   # === Week 1 — May 4-10, 2026 ===
+  # (Mon May 4 + Tue May 5 already published manually before pivot — skipped here)
 
-  # Mon May 4 — primary already published manually at 01:13 UTC (carousel)
-  # Evening Reel — drops 20 UTC tonight
-  - date: "2026-05-04"
-    slot: evening
-    yaml: content/week-01-real/01R-mon-may4-mars-jupiter-reel.yaml
-
-  # Tue May 5 — carousel + Reel (Saturn-in-Aries = highest viral potential of week)
-  - date: "2026-05-05"
-    slot: primary
-    yaml: content/week-01-real/02-tue-may5-saturn-aries.yaml
-  - date: "2026-05-05"
-    slot: evening
-    yaml: content/week-01-real/02R-tue-may5-saturn-aries-reel.yaml
-
-  # Wed May 6 — carousel only
-  - date: "2026-05-06"
-    slot: primary
-    yaml: content/week-01-real/03-wed-may6-moon-capricorn.yaml
-
-  # Thu May 7 — carousel only
+  # Thu May 7 — Pluto retrograde Reel
   - date: "2026-05-07"
-    slot: primary
-    yaml: content/week-01-real/04-thu-may7-pluto-retrograde.yaml
+    slot: evening
+    yaml: content/week-01-real/04R-thu-may7-pluto-reel.yaml
 
-  # Fri May 8 — carousel only (Saturn quote)
+  # Fri May 8 — Saturn doesn't punish
   - date: "2026-05-08"
-    slot: primary
-    yaml: content/week-01-real/05-fri-may8-saturn-quote.yaml
+    slot: evening
+    yaml: content/week-01-real/05R-fri-may8-saturn-quote-reel.yaml
 
-  # Sat May 9 — carousel evening + Reel evening (hyper-niche Aries-Sun double)
-  - date: "2026-05-09"
-    slot: primary
-    yaml: content/week-01-real/06-sat-may9-aries-sun-saturn.yaml
+  # Sat May 9 — Aries Sun (Saturn rebuild)
   - date: "2026-05-09"
     slot: evening
     yaml: content/week-01-real/06R-sat-may9-aries-sun-reel.yaml
 
-  # Sun May 10 — carousel only (sky this week)
+  # Sun May 10 — Sky this week ahead
   - date: "2026-05-10"
-    slot: primary
-    yaml: content/week-01-real/07-sun-may10-sky-this-week.yaml
+    slot: evening
+    yaml: content/week-01-real/07R-sun-may10-sky-week-reel.yaml
