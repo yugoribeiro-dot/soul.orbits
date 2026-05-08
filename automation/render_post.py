@@ -24,11 +24,19 @@ TEMPLATE_MAP = {
     "carousel_cover": TEMPLATES / "template_b_carousel_cover.html",
     "carousel_slide": TEMPLATES / "template_b_carousel_slide.html",
     "quote": TEMPLATES / "template_c_quote.html",
+    # Stories — 1080x1920 (vertical 9:16)
+    "story_daily_transit": TEMPLATES / "story_a_daily_transit.html",
+    "story_which_sign": TEMPLATES / "story_b_which_sign.html",
+    "story_poll": TEMPLATES / "story_c_poll.html",
+    "story_question": TEMPLATES / "story_d_question.html",
 }
 
+STORY_TEMPLATES = {"story_daily_transit", "story_which_sign", "story_poll", "story_question"}
 
-def render_html(html: str, out_path: Path, browser):
-    context = browser.new_context(viewport={"width": 1080, "height": 1350}, device_scale_factor=2)
+
+def render_html(html: str, out_path: Path, browser, viewport: dict | None = None):
+    vp = viewport or {"width": 1080, "height": 1350}
+    context = browser.new_context(viewport=vp, device_scale_factor=2)
     page = context.new_page()
     page.set_content(html, wait_until="networkidle")
     page.wait_for_timeout(800)
@@ -64,7 +72,9 @@ def render_post(post_yaml: Path, browser) -> list[Path]:
         tmpl = TEMPLATE_MAP[data["template"]]
         html = fill_template(tmpl.read_text(encoding="utf-8"), data["fields"])
         out = out_dir / f"{post_yaml.stem}.png"
-        render_html(html, out, browser)
+        # Stories use 1080x1920 viewport instead of 1080x1350.
+        vp = {"width": 1080, "height": 1920} if data["template"] in STORY_TEMPLATES else None
+        render_html(html, out, browser, viewport=vp)
         rendered.append(out)
 
     return rendered

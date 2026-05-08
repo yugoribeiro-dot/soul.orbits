@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>poll</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700;900&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cosmos: #14122B;
+    --gold: #FFC857;
+    --pink: #FF4D8D;
+    --violet: #8A4DFF;
+    --moon: #F5EFE0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--moon);
+    position: relative;
+    padding: 260px 80px 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background:
+      radial-gradient(circle at 30% 18%, rgba(138,77,255,0.55) 0%, transparent 50%),
+      radial-gradient(circle at 78% 75%, rgba(255,77,141,0.45) 0%, transparent 50%),
+      linear-gradient(160deg, #1a0f3a 0%, #14122B 55%, #2a0f3a 100%);
+  }
+  body::before {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: url("{{STARFIELD}}");
+    background-size: cover;
+    opacity: 0.95;
+  }
+  .label {
+    position: relative; z-index: 2;
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+  .question {
+    position: relative; z-index: 2;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 130px;
+    line-height: 0.98;
+    color: var(--moon);
+    letter-spacing: -2px;
+    text-align: center;
+    max-width: 920px;
+    text-shadow: 0 6px 30px rgba(0,0,0,0.5);
+    white-space: pre-line;
+  }
+  .vs-row {
+    position: relative; z-index: 2;
+    margin-top: 90px;
+    display: flex;
+    align-items: stretch;
+    gap: 30px;
+    width: 100%;
+  }
+  .opt {
+    flex: 1;
+    padding: 60px 30px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.08);
+    border: 2px solid rgba(255,200,87,0.4);
+    backdrop-filter: blur(8px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+  }
+  .opt.left { border-color: var(--pink); }
+  .opt.right { border-color: var(--gold); }
+  .opt-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+  .opt.left .opt-tag { color: var(--pink); }
+  .opt.right .opt-tag { color: var(--gold); }
+  .opt-text {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 62px;
+    color: var(--moon);
+    line-height: 1.0;
+    text-transform: lowercase;
+    letter-spacing: -1px;
+  }
+  .vs {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 72px;
+    color: var(--moon);
+    background: var(--cosmos);
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--gold);
+    box-shadow: 0 0 30px rgba(255,200,87,0.5);
+  }
+  .prompt {
+    margin-top: auto;
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: var(--pink);
+    text-transform: uppercase;
+    position: relative; z-index: 2;
+  }
+  .wordmark {
+    margin-top: 30px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 22px;
+    letter-spacing: 5px;
+    color: var(--moon);
+    text-transform: lowercase;
+    opacity: 0.6;
+    position: relative; z-index: 2;
+  }
+  .wordmark .dot { color: var(--pink); }
+</style>
+</head>
+<body>
+  <div class="label">{{LABEL}}</div>
+  <div class="question">{{QUESTION}}</div>
+  <div class="vs-row">
+    <div class="opt left">
+      <div class="opt-tag">A</div>
+      <div class="opt-text">{{OPTION_A}}</div>
+    </div>
+    <div class="vs">VS</div>
+    <div class="opt right">
+      <div class="opt-tag">B</div>
+      <div class="opt-text">{{OPTION_B}}</div>
+    </div>
+  </div>
+  <div class="prompt">↓ ADD POLL STICKER BELOW ↓</div>
+  <div class="wordmark">soul<span class="dot">.</span>orbits</div>
+</body>
+</html>

@@ -6,6 +6,8 @@ import { AriesSunReel } from './AriesSunReel';
 import { PlutoRetrogradeReel } from './PlutoRetrogradeReel';
 import { SaturnQuoteReel } from './SaturnQuoteReel';
 import { SkyThisWeekReel } from './SkyThisWeekReel';
+import { PovEclipseSampleReel } from './PovEclipseSampleReel';
+import { ReadYourSignReel } from './ReadYourSignReel';
 
 const sharedProps = {
   durationInFrames: 300,
@@ -23,6 +25,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="PlutoRetrograde" component={PlutoRetrogradeReel} {...sharedProps} />
       <Composition id="SaturnQuote" component={SaturnQuoteReel} {...sharedProps} />
       <Composition id="SkyThisWeek" component={SkyThisWeekReel} {...sharedProps} />
+      <Composition id="PovEclipseSample" component={PovEclipseSampleReel} {...sharedProps} />
+      <Composition id="ReadYourSign" component={ReadYourSignReel} {...sharedProps} />
     </>
   );
 };

@@ -1,0 +1,9 @@
+template: story_daily_transit
+fields:
+  label: TODAY'S TRANSIT
+  glyph: "♇"
+  headline: |-
+    Pluto just
+    went backwards.
+  subline: 5 months of secrets coming up.
+  question: which truth comes back this week?

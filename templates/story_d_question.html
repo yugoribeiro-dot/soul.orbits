@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>question</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700;900&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cosmos: #14122B;
+    --gold: #FFC857;
+    --pink: #FF4D8D;
+    --violet: #8A4DFF;
+    --moon: #F5EFE0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--moon);
+    position: relative;
+    padding: 280px 80px 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background:
+      radial-gradient(circle at 50% 35%, rgba(138,77,255,0.6) 0%, transparent 55%),
+      radial-gradient(circle at 20% 90%, rgba(255,77,141,0.5) 0%, transparent 50%),
+      radial-gradient(circle at 90% 8%, rgba(255,200,87,0.35) 0%, transparent 45%),
+      linear-gradient(160deg, #1a0f3a 0%, #14122B 55%, #2a0f3a 100%);
+  }
+  body::before {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: url("{{STARFIELD}}");
+    background-size: cover;
+    opacity: 0.95;
+  }
+  .label {
+    position: relative; z-index: 2;
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 50px;
+  }
+  .quote-mark {
+    position: relative; z-index: 2;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 280px;
+    line-height: 0.6;
+    color: var(--gold);
+    opacity: 0.4;
+    margin-bottom: -80px;
+  }
+  .question {
+    position: relative; z-index: 2;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 120px;
+    line-height: 1.0;
+    color: var(--moon);
+    letter-spacing: -2px;
+    text-align: center;
+    max-width: 920px;
+    text-shadow: 0 6px 30px rgba(0,0,0,0.5);
+    white-space: pre-line;
+  }
+  .subtext {
+    position: relative; z-index: 2;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 48px;
+    color: var(--gold);
+    margin-top: 50px;
+    line-height: 1.25;
+    text-align: center;
+    max-width: 920px;
+  }
+  .sticker-zone {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    position: relative; z-index: 2;
+  }
+  .sticker-prompt {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: var(--pink);
+    text-transform: uppercase;
+  }
+  .sticker-placeholder {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 40px;
+    color: var(--moon);
+    background: rgba(255,255,255,0.08);
+    border: 2px dashed rgba(255,77,141,0.5);
+    border-radius: 22px;
+    padding: 28px 40px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .wordmark {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 22px;
+    letter-spacing: 5px;
+    color: var(--moon);
+    text-transform: lowercase;
+    opacity: 0.6;
+  }
+  .wordmark .dot { color: var(--pink); }
+</style>
+</head>
+<body>
+  <div class="label">{{LABEL}}</div>
+  <div class="quote-mark">"</div>
+  <div class="question">{{QUESTION}}</div>
+  <div class="subtext">{{SUBTEXT}}</div>
+  <div class="sticker-zone">
+    <div class="sticker-prompt">↓ ADD QUESTION STICKER ↓</div>
+    <div class="sticker-placeholder">{{STICKER_TEXT}}</div>
+    <div class="wordmark">soul<span class="dot">.</span>orbits</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+template: story_poll
+fields:
+  label: SATURN IN ARIES IS HITTING YOU AS
+  question: |-
+    a clean break,
+    or a slow burn?
+  option_a: clean break
+  option_b: slow burn

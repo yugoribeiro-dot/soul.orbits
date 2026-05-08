@@ -1,0 +1,9 @@
+template: story_question
+fields:
+  label: ASK ME ANYTHING
+  question: |-
+    What's the
+    transit you've
+    been ignoring?
+  subtext: tell me your big 3 and I'll tell you what's loud right now.
+  sticker_text: drop your big 3 here ↓

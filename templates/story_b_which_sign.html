@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>which sign?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700;900&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cosmos: #14122B;
+    --gold: #FFC857;
+    --pink: #FF4D8D;
+    --violet: #8A4DFF;
+    --moon: #F5EFE0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--moon);
+    position: relative;
+    padding: 240px 80px 200px;
+    display: flex;
+    flex-direction: column;
+    background:
+      radial-gradient(circle at 50% 25%, rgba(255,77,141,0.55) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(138,77,255,0.45) 0%, transparent 50%),
+      radial-gradient(circle at 18% 88%, rgba(255,200,87,0.32) 0%, transparent 50%),
+      linear-gradient(170deg, #2a0f3a 0%, #14122B 55%, #1a0f3a 100%);
+  }
+  body::before {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: url("{{STARFIELD}}");
+    background-size: cover;
+    opacity: 0.95;
+  }
+  .pill {
+    align-self: center;
+    background: var(--gold);
+    color: var(--cosmos);
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 32px;
+    letter-spacing: 5px;
+    padding: 16px 30px 13px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    box-shadow: 0 12px 40px rgba(255,200,87,0.45);
+    position: relative; z-index: 2;
+  }
+  .question {
+    position: relative; z-index: 2;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 124px;
+    line-height: 1.0;
+    color: var(--moon);
+    letter-spacing: -2px;
+    text-align: center;
+    text-shadow: 0 6px 30px rgba(0,0,0,0.5);
+  }
+  .description {
+    position: relative; z-index: 2;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 60px;
+    color: var(--gold);
+    margin-top: 50px;
+    line-height: 1.25;
+    text-align: center;
+    max-width: 920px;
+    align-self: center;
+  }
+  .options {
+    position: relative; z-index: 2;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 30px 36px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.08);
+    border: 2px solid rgba(255,200,87,0.4);
+    backdrop-filter: blur(8px);
+  }
+  .option .glyph {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 90px;
+    font-weight: 500;
+    color: var(--gold);
+    text-shadow: 0 0 24px rgba(255,200,87,0.6);
+    line-height: 1;
+    width: 100px;
+    text-align: center;
+  }
+  .option .name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 64px;
+    color: var(--moon);
+    text-transform: lowercase;
+    letter-spacing: -1px;
+  }
+  .prompt {
+    text-align: center;
+    margin-top: 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: var(--pink);
+    text-transform: uppercase;
+    position: relative; z-index: 2;
+  }
+  .wordmark {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 22px;
+    letter-spacing: 5px;
+    color: var(--moon);
+    text-transform: lowercase;
+    opacity: 0.6;
+    position: relative; z-index: 2;
+  }
+  .wordmark .dot { color: var(--pink); }
+</style>
+</head>
+<body>
+  <div class="pill">QUIZ TIME</div>
+  <div class="question">{{QUESTION}}</div>
+  <div class="description">"{{DESCRIPTION}}"</div>
+  <div class="options">
+    <div class="option"><div class="glyph">{{GLYPH_A}}</div><div class="name">{{SIGN_A}}</div></div>
+    <div class="option"><div class="glyph">{{GLYPH_B}}</div><div class="name">{{SIGN_B}}</div></div>
+    <div class="option"><div class="glyph">{{GLYPH_C}}</div><div class="name">{{SIGN_C}}</div></div>
+  </div>
+  <div class="prompt">↑ TAP TO VOTE — POLL STICKER ON TOP</div>
+  <div class="wordmark">soul<span class="dot">.</span>orbits</div>
+</body>
+</html>

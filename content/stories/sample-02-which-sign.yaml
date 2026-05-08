@@ -1,0 +1,10 @@
+template: story_which_sign
+fields:
+  question: which sign?
+  description: drafts the angry email at 11pm and re-reads it 4 times before deleting it
+  glyph_a: "♈︎"
+  sign_a: aries
+  glyph_b: "♍︎"
+  sign_b: virgo
+  glyph_c: "♏︎"
+  sign_c: scorpio
