@@ -95,12 +95,22 @@ jobs:
           TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
           TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
           SLOT: ${{ steps.slot.outputs.slot }}
+          PYTHONUNBUFFERED: "1"
         run: |
+          set -x
+          # Diagnostics: confirm essential env vars are present (mask values)
+          for v in META_ACCESS_TOKEN IG_USER_ID IMAGE_BASE_URL REPO_RAW_BASE_URL; do
+            if [ -z "${!v}" ]; then echo "❌ MISSING ENV: $v"; exit 1; fi
+            echo "✓ $v set (len=${#v})"
+          done
+          echo "post_rel=${{ steps.post.outputs.post_rel }}"
+          echo "slot=${{ steps.slot.outputs.slot }}"
+
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             echo "DRY RUN — rendering only"
-            python automation/render_post.py "${{ steps.post.outputs.post_rel }}"
+            python -u automation/render_post.py "${{ steps.post.outputs.post_rel }}"
           else
-            python automation/publish_today.py "${{ steps.slot.outputs.slot }}"
+            python -u automation/publish_today.py "${{ steps.slot.outputs.slot }}"
           fi
 
       - name: Commit publish log
